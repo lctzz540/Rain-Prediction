@@ -44,8 +44,8 @@ export default function App() {
       day:day,
       dayofweek:dayofweek,
       month:month
-    })}).then((res)=> res.json()).then((result)=> {if (result===1) {
-      Alert.alert(
+    })}).then((res)=> res.json()).then((result)=> {
+        if (result.result===1) {Alert.alert(
       "Error",
       "Today may rain",
       [
@@ -56,7 +56,7 @@ export default function App() {
         },
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
-    )}else{Alert.alert(
+    )}if (result.result===0){Alert.alert(
       "Error",
       "Today may not rain",
       [
