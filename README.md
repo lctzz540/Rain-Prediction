@@ -1,5 +1,9 @@
 # RAIN PREDICTION 
 
+Mobile App use React Native for predict rain by RandomForest models. Causes it to large to upload the model, you can follow these step to download the model and test my app. The notebook I put in backend folder too.
+
+![screenshot](./screenshot/Screen Shot 2022-10-24 at 00.15.13.png)
+
 1. Please download model into the folder backend from link: https://drive.google.com/drive/folders/1R9HkhMO3MlZG26V8CTMgVWD0zx_Q8hnS?usp=sharing
 
 2. Cd to folder backend and run the following command:
