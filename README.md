@@ -1,6 +1,6 @@
 # RAIN PREDICTION 
 
-Mobile App use React Native for predict rain by RandomForest models. Causes it to large to upload the model, you can follow these step to download the model and test my app. The notebook I put in backend folder too.
+Mobile App use React Native for predict rain by RandomForest models. Causes it too large to upload the model, you can follow these step to download the model and test my app. The notebook I put in backend folder too.
 
 ![screenshot](./screenshot/screenshot.png)
 
