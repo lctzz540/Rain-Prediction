@@ -46,7 +46,7 @@ export default function App() {
       month:month
     })}).then((res)=> res.json()).then((result)=> {
         if (result.result===1) {Alert.alert(
-      "Error",
+      "Predict result",
       "Today may rain",
       [
         {
@@ -57,7 +57,7 @@ export default function App() {
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     )}if (result.result===0){Alert.alert(
-      "Error",
+      "Predict result",
       "Today may not rain",
       [
         {
