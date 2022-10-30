@@ -1,0 +1,17 @@
+export const dataWind_d = [{value:'NNE', key:0},
+  {value:'ENE', key:1},
+  {value:'ESE', key:2},
+  {value:'E', key:3},
+  {value:'SE', key:4},
+  {value:'NE', key:5},
+  {value:'S', key:6},
+  {value:'SSW', key:7},
+  {value:'SSE', key:8},
+  {value:'SW', key:9},
+  {value:'WSW', key:10},
+  {value:'W', key:11},
+  {value:'WNW', key:12},
+  {value:'NW', key:13},
+  {value:'N', key:14},
+  {value:'NNW', key:15}
+]

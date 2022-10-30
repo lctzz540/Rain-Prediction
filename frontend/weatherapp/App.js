@@ -7,7 +7,10 @@ import {
   Pressable,
   Alert
 } from 'react-native';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import SelectList from 'react-native-dropdown-select-list'
+import {dataProvinces} from './menu/dataProvinces.js'
+import {dataWind_d} from './menu/dataWind_d.js'
 
 
 export default function App() {
@@ -23,7 +26,13 @@ export default function App() {
   const [day, setDay] = useState()
   const [dayofweek, setDayofWeek] = useState()
   const [month, setMonth] = useState()
-  const pi = 3.14
+  const date = new Date()
+  
+  useEffect(()=>{
+    setDay(date.getDate())
+    setDayofWeek(date.getDay())
+    setMonth(date.getMonth())
+  },)
   const handleSubmit = () =>{
     fetch('http://127.0.0.1:8000/predict', {
        method: 'POST',
@@ -47,7 +56,7 @@ export default function App() {
     })}).then((res)=> res.json()).then((result)=> {
         if (result.result===1) {Alert.alert(
       "Predict result",
-      "Today may rain",
+      "Tomorrow may rain",
       [
         {
           text: "Cancel",
@@ -58,7 +67,7 @@ export default function App() {
       ]
     )}if (result.result===0){Alert.alert(
       "Predict result",
-      "Today may not rain",
+      "Tomorrow may not rain",
       [
         {
           text: "Cancel",
@@ -86,23 +95,44 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Text style={{color:"white", fontSize:72, marginBottom:50, fontFamily: 'SavoyeLetPlain'}}>Weather App</Text>
+      <Text style={{color:"white", fontSize:72, marginBottom:50}}>Weather App</Text>
+      {date?(<Text style={{fontSize:24}}>Today is {date.getDate()}/{date.getMonth()}/{date.getFullYear()}</Text>):<Text></Text>}
       <View style={{flexDirection: 'row'}}>
         <View style={{display:"inline-block"}}>
-        <TextInput style={styles.input} placeholder="Province" onChangeText={(value)=>setProvince(value)} />
+        <SelectList 
+      setSelected={setProvince} 
+      data={dataProvinces}  
+      placeholder= "Province"
+      search={true} 
+      boxStyles={styles.input} //override default styles
+      />
+          <SelectList 
+      setSelected={setWind_d} 
+      data={dataWind_d}  
+      placeholder= "Wind_d"
+      search={true} 
+      boxStyles={styles.input} //override default styles
+      />
+
         <TextInput style={styles.input} placeholder="T-max" onChangeText={(value)=>setT_max(value)} />
         <TextInput style={styles.input} placeholder="T-min" onChangeText={(value)=>setT_min(value)} />
         <TextInput style={styles.input} placeholder="wind" onChangeText={(value)=>setWind(value)}/>
-        <TextInput style={styles.input} placeholder="wind-d" onChangeText={(value)=>setWind_d(value)}/>
-        <TextInput style={styles.input} placeholder="rain_today"onChangeText={(value)=>setRain_today(value)}/>
         </View>
-        <View style={{display:"inline-block"}}>
+        
+        <View>
+          <SelectList 
+      setSelected={setRain_today} 
+      data={ [{value:'No', key:0},
+  {value:'Yes', key:1}]
+}  
+      placeholder= "Rain Today"
+      search={true} 
+      boxStyles={styles.input} //override default styles
+      />
+
         <TextInput style={styles.input} placeholder="humidi" onChangeText={(value)=>setHumidi(value)}/>
         <TextInput style={styles.input} placeholder="cloud" onChangeText={(value)=>setCloud(value)}/>
         <TextInput style={styles.input} placeholder="pressure" onChangeText={(value)=>setPressure(value)}/>
-        <TextInput style={styles.input} placeholder="day" onChangeText={(value)=>setDay(value)}/>
-        <TextInput style={styles.input} placeholder="dayofweek"onChangeText={(value)=>setDayofWeek(value)}/>
-        <TextInput style={styles.input} placeholder="month"onChangeText={(value)=>setMonth(value)}/>
         </View>
       </View>
       <Pressable style={styles.button} onPress={()=>handleSubmit()}>
