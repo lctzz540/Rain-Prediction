@@ -96,7 +96,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{color:"white", fontSize:72, marginBottom:50}}>Weather App</Text>
-      {date?(<Text style={{fontSize:24}}>Today is {date.getDate()}/{date.getMonth()}/{date.getFullYear()}</Text>):<Text></Text>}
+      {date?(<Text style={{fontSize:24}}>Today is {date.getDate()}/{date.getMonth()+1}/{date.getFullYear()}</Text>):<Text></Text>}
       <View style={{flexDirection: 'row'}}>
         <View style={{display:"inline-block"}}>
         <SelectList 

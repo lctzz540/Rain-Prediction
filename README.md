@@ -8,7 +8,7 @@ Mobile App use React Native for predict rain by RandomForest models. Causes it t
 
 2. Cd to folder backend and run the following command:
 ``` bash
-uvicorn api:app --reload
+uvicorn app:app --reload
 ```
 3. Cd to folder frontend and run the following command if you use ios simulator:
 ```bash
